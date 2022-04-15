@@ -1,20 +1,41 @@
 describe('Smrthi Home Page', () => {
     beforeEach(() => {
-      // Cypress starts out with a blank slate for each test
-      // so we must tell it to visit our website with the `cy.visit()` command.
-      // Since we want to visit the same URL at the start of all our tests,
-      // we include it in our beforeEach function so that it runs before each test
+      // This test suite will test the Home page or default page of the https://smrthi.com
       cy.visit('https://smrthi.com')
     })
-    it('To Check Login button visibility', () => {
+    
+    it("To check Smrthi Logo in the page",()=>{
+        cy.get(".MuiBox-root").find("img").should('be.visible')
+        cy.get(".MuiBox-root").find("img").click()
+    })
+    
+    it('To Check Login link visibility', () => {
         cy.get(".css-b7766g").first().should('have.text',"Login")
+        //cy.get(".css-b7766g").first().should('have.text',"Login").click().get(".button").should('have.text',"Sign in with Google")
+    })
+    
+    it('To check after clicking Login link navigating to Sign in with Google page',()=>{
+        cy.get('.css-b7766g').first().contains('Login').click().get('.button').should('have.text',"Sign in with Google")
     })
     it("To Check rgveda text in Sanskrit ", ()=>{
-        
-        cy.get('.MuiContainer-root .MuiContainer-maxWidthLg').contains("ऋग्वेद")
+        cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root > :nth-child(1)').should('have.text',"ऋग्वेद")
+        //cy.get('.MuiTypography-root .MuiTypography-body1 .css-18m8r0v')
+        //cy.get('.MuiContainer-root .MuiContainer-maxWidthLg').should('have.text',"ऋग्वेद")
+       //MuiTypography-root MuiTypography-body1 css-18m8r0v
         //cy.get(".MuiTypography-root MuiTypography-body1 ").first().should('have.text',"ऋग्वेद")
     })
-  
+    it("To check Rugveda text in English",()=>{
+        cy.get(".MuiContainer-root .MuiContainer-maxWidthLg").contains("ṛgveda").click()
+    })
+    it("To check user can click Rugveda button",()=>{
+        cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root').click().then(function()
+        {
+            cy.log("Naveen")
+        })
+    })
+    it("To check user can click Yajurveda button",()=>{
+        cy.contains("aṣṭāṅgahṛdayasaṃhitā").click()
+    })
     // context('with a checked task', () => {
     //   beforeEach(() => {
     //     // We'll take the command we used above to check off an element
