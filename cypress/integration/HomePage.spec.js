@@ -17,7 +17,7 @@ describe('Smrthi Home Page', () => {
     it('To check after clicking Login link navigating to Sign in with Google page',()=>{
         cy.get('.css-b7766g').first().contains('Login').click().get('.button').should('have.text',"Sign in with Google")
     })
-    it("To Check rgveda text in Sanskrit ", ()=>{
+    it("To Check rugveda text in Sanskrit ", ()=>{
         cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root > :nth-child(1)').should('have.text',"ऋग्वेद")
         //cy.get('.MuiTypography-root .MuiTypography-body1 .css-18m8r0v')
         //cy.get('.MuiContainer-root .MuiContainer-maxWidthLg').should('have.text',"ऋग्वेद")
@@ -25,7 +25,8 @@ describe('Smrthi Home Page', () => {
         //cy.get(".MuiTypography-root MuiTypography-body1 ").first().should('have.text',"ऋग्वेद")
     })
     it("To check Rugveda text in English",()=>{
-        cy.get(".MuiContainer-root .MuiContainer-maxWidthLg").contains("ṛgveda").click()
+        cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root > :nth-child(2)').should('have.text','ṛgveda')
+        //cy.get(".MuiContainer-root .MuiContainer-maxWidthLg").contains("ṛgveda").click()
     })
     it("To check user can click Rugveda button",()=>{
         cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root').click().then(function()
@@ -36,6 +37,10 @@ describe('Smrthi Home Page', () => {
     it("To check user can click Yajurveda button",()=>{
         cy.contains("aṣṭāṅgahṛdayasaṃhitā").click()
     })
+    //git add .
+    //git commit
+    //git push
+    //git status
     // context('with a checked task', () => {
     //   beforeEach(() => {
     //     // We'll take the command we used above to check off an element
