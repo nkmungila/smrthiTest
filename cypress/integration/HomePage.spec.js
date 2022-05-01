@@ -14,6 +14,12 @@ describe('Smrthi Home Page', () => {
         //cy.get(".css-b7766g").first().should('have.text',"Login").click().get(".button").should('have.text',"Sign in with Google")
     })
     
+    it('To check Menu icon can be clicked in the left side',()=>{
+        cy.get('.MuiSvgIcon-root').click()
+        cy.get('#demo-simple-select-label').should('have.text',"Language")
+        cy.get('.MuiSelect-select').click()
+        cy.get('.MuiMenuItem-root').find('.MuiMenuItem-root').should('have.lenght',5)
+    })
     it('To check after clicking Login link navigating to Sign in with Google page',()=>{
         cy.get('.css-b7766g').first().contains('Login').click().get('.button').should('have.text',"Sign in with Google")
     })
@@ -29,16 +35,20 @@ describe('Smrthi Home Page', () => {
         //cy.get(".MuiContainer-root .MuiContainer-maxWidthLg").contains("ṛgveda").click()
     })
     it("To check user can click Rugveda button",()=>{
-        cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root').click().then(function()
-        {
-            cy.log("Naveen")
-        })
+        cy.get(':nth-child(1) > .MuiPaper-root > .MuiButtonBase-root > .MuiCardContent-root').click()
     })
-    it("To check user can click Yajurveda button",()=>{
+    it("To check user can click aṣṭāṅgahṛdayasaṃhitā button",()=>{
         cy.contains("aṣṭāṅgahṛdayasaṃhitā").click()
+        cy.get('.MuiBox-root > .MuiTypography-root').should('have.text','अष्टाङ्गहृदयसंहिता')
+
     })
+    
     //git add .
     //git commit
+    //.then(function()
+  //  {
+      //  cy.log("Naveen")
+  //  })
     //git push
     //git status
     // context('with a checked task', () => {
