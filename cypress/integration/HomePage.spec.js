@@ -16,9 +16,20 @@ describe('Smrthi Home Page', () => {
     
     it('To check Menu icon can be clicked in the left side',()=>{
         cy.get('.MuiSvgIcon-root').click()
+        cy.get('div[role="button"]').should('be.visible')
         cy.get('#demo-simple-select-label').should('have.text',"Language")
+        cy.get('div[role="button"]').should('have.text',"Sanskrit")
         cy.get('.MuiSelect-select').click()
-        cy.get('.MuiMenuItem-root').find('.MuiMenuItem-root').should('have.lenght',5)
+        cy.get('li[data-value="kannada"]').click()
+        //cy.get('.MuiMenuItem-root').find('.MuiMenuItem-root').should('have.lenght',5)
+    })
+    it('To check text Langauage changing to Kannada after chnaging it from left side',()=>{
+        cy.get('.MuiSvgIcon-root').click()
+        cy.get('.MuiSelect-select').click()
+        cy.get('li[data-value="kannada"]').click()
+        cy.get('button[aria-label="menu"]').click()
+        cy.contains('ऋग्वेद').click()
+        cy.get('.MuiTypography-root.MuiTypography-h4').should('have.text','ಋಗ್ವೇದ')
     })
     it('To check after clicking Login link navigating to Sign in with Google page',()=>{
         cy.get('.css-b7766g').first().contains('Login').click().get('.button').should('have.text',"Sign in with Google")
@@ -42,7 +53,10 @@ describe('Smrthi Home Page', () => {
         cy.get('.MuiBox-root > .MuiTypography-root').should('have.text','अष्टाङ्गहृदयसंहिता')
 
     })
-    
+    //id tagname#idname
+    //classname .classname .search-keyword
+    //any attribute tagname[attribute=value] input[type='search']
+
     //git add .
     //git commit
     //.then(function()
